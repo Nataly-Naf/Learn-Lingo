@@ -1,3 +1,5 @@
+import { HomePage } from 'Pages/HomePage/HomePage';
+
 export const App = () => {
-  return <div> Hello </div>;
+  return <HomePage />;
 };
