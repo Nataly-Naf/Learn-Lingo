@@ -14,6 +14,7 @@ export const HomePage = () => {
       const result = await fetchData();
       setData(result);
       console.log(result);
+      console.log(data);
     };
 
     getData();
