@@ -18,7 +18,7 @@ export const HomePage = () => {
     };
 
     getData();
-  }, []);
+  });
   return (
     <>
       <TeachersList />
