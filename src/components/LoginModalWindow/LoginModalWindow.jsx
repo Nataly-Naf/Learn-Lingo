@@ -140,22 +140,17 @@ export const LoginModalWindow = ({ closeModal }) => {
     };
   }, [closeModal]);
 
-  // Закрытие по клику вне модалки
-  const handleClickOutside = e => {
-    // Проверяем, что клик был вне модального окна
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      closeModal();
-    }
-  };
-
   useEffect(() => {
-    // Добавляем слушателя события клика мышью
+    const handleClickOutside = e => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        closeModal();
+      }
+    };
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      // Удаляем слушателя при размонтировании компонента
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [closeModal]);
 
   return (
     <ModalWrapper>

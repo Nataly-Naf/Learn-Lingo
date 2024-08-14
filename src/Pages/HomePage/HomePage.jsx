@@ -17,7 +17,7 @@ export const HomePage = () => {
     };
 
     getData();
-  }, []);
+  }, [data]);
   return (
     <>
       <StyledMain>
