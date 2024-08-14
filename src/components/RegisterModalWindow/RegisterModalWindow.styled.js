@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
   position: absolute;
+  z-index: 1000;
   background-color: white;
   top: 300px;
   left: 300px;

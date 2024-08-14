@@ -9,7 +9,6 @@ export const TeachersList = () => {
     const getData = async () => {
       const result = await fetchData();
       setData(result);
-      console.log(result);
     };
 
     getData();
@@ -18,7 +17,11 @@ export const TeachersList = () => {
     <>
       {data &&
         data.map(teacher => {
-          return <TeacherCardShort key={nanoid()} teacher={teacher} />;
+          return (
+            <div key={nanoid()}>
+              <TeacherCardShort teacher={teacher} />
+            </div>
+          );
         })}
     </>
   );

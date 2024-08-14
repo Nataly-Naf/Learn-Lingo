@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
   width: 1200px;
@@ -24,7 +25,7 @@ export const ButtonWrapper = styled.div`
   gap: 28px;
 `;
 
-export const NavigationButton = styled.button`
+export const NavigationButton = styled(NavLink)`
   background: none;
   border: none;
   cursor: pointer;

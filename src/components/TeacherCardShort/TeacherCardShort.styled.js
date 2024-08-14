@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
+export const StyledButton = styled.button`
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: red;
+  }
+`;
+
 export const CardWrapper = styled.div`
   position: relative;
   width: 1184 px;

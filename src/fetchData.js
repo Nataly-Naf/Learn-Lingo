@@ -1,13 +1,11 @@
-// src/fetchData.js
 import { db } from './firebase';
 import { ref, get } from 'firebase/database';
 
 const fetchData = async () => {
-  const dataRef = ref(db, '/'); // Укажите путь к вашим данным в базе данных
+  const dataRef = ref(db, '/');
   try {
     const snapshot = await get(dataRef);
     if (snapshot.exists()) {
-      console.log(snapshot.val());
       return snapshot.val();
     } else {
       console.log('No data available');

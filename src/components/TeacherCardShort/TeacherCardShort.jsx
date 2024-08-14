@@ -9,7 +9,11 @@ import {
   InfoDescription,
   TeachersName,
   TeachersNameWrapper,
+  StyledButton,
 } from './TeacherCardShort.styled';
+import { Link } from 'react-router-dom';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 export const TeacherCardShort = ({
   teacher: {
@@ -20,10 +24,39 @@ export const TeacherCardShort = ({
     lesson_info,
     surname,
     levels,
+    id,
   },
 }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    // Check if the teacher is in the favorites list when component mounts
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setIsFavorite(favorites.includes(id));
+  }, [id]);
+
+  const toggleFavorite = () => {
+    console.log(id);
+
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (favorites.includes(id)) {
+      // Remove from favorites
+      const updatedFavorites = favorites.filter(favId => favId !== id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      // Add to favorites
+      favorites.push(id);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      setIsFavorite(true);
+    }
+  };
   return (
     <CardWrapper>
+      <StyledButton onClick={toggleFavorite}>
+        {' '}
+        {isFavorite ? <FaHeart /> : <FaRegHeart />}{' '}
+      </StyledButton>
       <p>Languages</p>
       <TeachersInfoBlock>
         <p>Lessons online</p>
@@ -43,7 +76,7 @@ export const TeacherCardShort = ({
           <InfoDescription>
             {languages &&
               languages.map(language => {
-                return <span> {language}, </span>;
+                return <span key={nanoid()}> {language}, </span>;
               })}
           </InfoDescription>
         </MainInfoWrapper>
@@ -66,6 +99,7 @@ export const TeacherCardShort = ({
           return <button key={nanoid()}>{level}</button>;
         })}
       </div>
+      <Link to={`/Learn-Lingo/teachers/${id}`}>More info</Link>
     </CardWrapper>
   );
 };

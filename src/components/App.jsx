@@ -1,5 +1,10 @@
-import { HomePage } from 'Pages/HomePage/HomePage';
-
+import { AuthProvider } from 'context/authContext';
+import { RouterProvider } from 'react-router';
+import { Router } from 'routing';
 export const App = () => {
-  return <HomePage />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={Router} />;
+    </AuthProvider>
+  );
 };
