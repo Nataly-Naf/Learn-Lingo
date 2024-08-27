@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const BlockWrapper = styled.div`
   width: 720px;
   height: 530px;
+  box-sizing: border-box;
   background-color: #f8f8f8;
   padding-left: 64px;
   padding-top: 98px;

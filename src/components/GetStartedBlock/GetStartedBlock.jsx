@@ -5,6 +5,7 @@ import {
   SelectedText,
   StyledText,
 } from './GetStartedBlock.styled';
+import { NavLink } from 'react-router-dom';
 
 export const GetStartedBlock = () => {
   return (
@@ -18,7 +19,10 @@ export const GetStartedBlock = () => {
         Elevate your language proficiency to new heights by connecting with
         highly qualified and experienced tutors.
       </StyledText>
-      <Button text="Get started" />
+
+      <NavLink to="/Learn-Lingo/teachers">
+        <Button text="Get started" />
+      </NavLink>
     </BlockWrapper>
   );
 };

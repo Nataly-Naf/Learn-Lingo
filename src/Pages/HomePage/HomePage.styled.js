@@ -1,20 +1,19 @@
 import styled from 'styled-components';
 export const HomePageWrapper = styled.div`
   width: 1440px;
-  padding-left: 64px;
-  padding-right: 64px;
-
-  border: 1px solid blue;
 `;
-export const StyledMain = styled.main`
-  width: 100%;
-  padding-left: 64px;
-  padding-right: 64px;
-  border: 1px solid red;
-`;
+// export const StyledMain = styled.main`
+//   width: 100%;
+//   padding-left: 64px;
+//   padding-right: 64px;
+//   display: flex;
+//   justify-content: center;
+//   gap: 24px;
+//   margin: 0;
+// `;
 
-export const MainBlocksWrapper = styled.div`
+export const MainBlocksWrapper = styled.main`
   display: flex;
-
+  justify-content: center;
   gap: 24px;
 `;

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
   position: absolute;
+  z-index: 10000;
   background-color: white;
   top: 300px;
   left: 300px;
   width: 566px;
-  //   height: 506px;
   border: 2px solid red;
   padding: 64px;
   border-radius: 30px;

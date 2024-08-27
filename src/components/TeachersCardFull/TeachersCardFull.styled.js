@@ -1,19 +1,51 @@
 import styled from 'styled-components';
 
-export const Avatar = styled.img`
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-`;
-export const AvatarWrapper = styled.div`
+import { Link } from 'react-router-dom';
+
+export const StyledButton = styled.button`
   position: absolute;
-  width: 120px;
+  right: 20px;
+  top: 20px;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: red;
+  }
+`;
+
+export const CardWrapper = styled.div`
+  position: relative;
+  width: 1184px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  height: auto;
+  border: 2px solid red;
+  border-radius: 24px;
+  padding: 24px 24px 24px 192px;
+`;
+
+export const StyledLink = styled(Link)`
+  color: #121417;
+  font-size: 16px;
+  font-weight: 600;
+`;
+export const LevelButtonWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 120px;
-  border-radius: 50%;
-  left: 24px;
-  top: 24px;
-  border: 3px solid #fbe9ba;
+  margin-top: 32px;
+  gap: 8px;
+`;
+export const LevelButton = styled.button`
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 25px;
+  border: solid 1px #8a8a89;
+
+  &:hover {
+    background-color: #ffc531;
+    border: none;
+  }
+`;
+export const ExperienceText = styled.p`
+  margin-bottom: 32px;
 `;
