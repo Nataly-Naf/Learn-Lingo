@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
 export const BlockWrapper = styled.div`
-  width: 720px;
-  height: 530px;
+  width: 90%;
   box-sizing: border-box;
   background-color: #f8f8f8;
-  padding-left: 64px;
-  padding-top: 98px;
-  padding-right: 108px;
+  padding: 20px;
+  margin-bottom: 20px;
+
   border-radius: 30px;
+  @media (min-width: 768px) {
+    width: 720px;
+    height: 530px;
+    padding-left: 64px;
+    padding-top: 98px;
+    padding-right: 108px;
+    margin-bottom: 0;
+  }
 `;
 
 export const StyledTitle = styled.h1`

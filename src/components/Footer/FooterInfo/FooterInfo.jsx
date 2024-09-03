@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   FooterInfoWrapper,
   FooterInfoDescr,
@@ -14,7 +13,7 @@ export const FooterInfo = ({ numbers, descr }) => {
   );
 };
 
-FooterInfo.propTypes = {
-  numbers: PropTypes.number.isRequired,
-  descr: PropTypes.string.isRequired,
-};
+// FooterInfo.propTypes = {
+//   numbers: PropTypes.number.isRequired,
+//   descr: PropTypes.string.isRequired,
+// };

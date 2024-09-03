@@ -6,6 +6,7 @@ import {
   orderByChild,
   limitToFirst,
   startAt,
+  equalTo,
 } from 'firebase/database';
 
 const pageSize = 4;
@@ -14,7 +15,6 @@ const fetchData = async startId => {
   let dataQuery;
 
   if (startId) {
-    console.log(startId);
     dataQuery = query(
       ref(db, '/'),
       orderByChild('id'),
@@ -30,16 +30,12 @@ const fetchData = async startId => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const dataArray = Object.values(data);
-      console.log(data);
 
       const keys = Object.keys(data);
-      console.log(keys);
 
       if (keys.length >= pageSize) {
         const lastKey = keys[keys.length - 1];
-        console.log(lastKey);
         const lastItemId = data[lastKey].id;
-        console.log(lastItemId);
 
         return { data: dataArray, lastKey: lastItemId };
       } else {
@@ -56,3 +52,32 @@ const fetchData = async startId => {
 };
 
 export default fetchData;
+
+export const fetchTeacherById = async teacherId => {
+  try {
+    console.log('Fetching teacher with ID:', teacherId);
+
+    const teacherQuery = query(
+      ref(db, '/'),
+      orderByChild('id'),
+      equalTo(teacherId)
+    );
+
+    const snapshot = await get(teacherQuery);
+
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      const teacherData = Object.values(data)[0];
+
+      console.log('Teacher data found:', teacherData);
+      return teacherData;
+    } else {
+      console.log(`No data available for teacherId: ${teacherId}`);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};

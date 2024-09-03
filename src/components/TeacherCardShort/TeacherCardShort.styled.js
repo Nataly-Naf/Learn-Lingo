@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
 
 export const StyledButton = styled.button`
   position: absolute;
   right: 20px;
   top: 20px;
-
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: red;
-  }
+  background-color: transparent;
+  border: none;
+`;
+export const StyledIcon = styled(FaHeart)`
+  color: red;
 `;
 
 export const CardWrapper = styled.div`

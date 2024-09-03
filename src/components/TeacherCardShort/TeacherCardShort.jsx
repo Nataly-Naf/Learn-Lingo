@@ -3,9 +3,10 @@ import {
   StyledButton,
   ReadMoreButton,
   StyledLink,
+  StyledIcon,
 } from './TeacherCardShort.styled';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { FaRegHeart } from 'react-icons/fa';
+import { useAuth } from 'context/authContext';
 import { LevelButtons } from 'components/TeacherCardElements/LevelButtons';
 import { TeacherInfo } from 'components/TeacherCardElements/TeacherInfo';
 import { TeacherAvatar } from 'components/TeacherCardElements/TeacherAvatar';
@@ -26,33 +27,17 @@ export const TeacherCardShort = ({
     lessons_done,
   },
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { favorites, toggleFavorite } = useAuth();
+  const isFavorite = favorites.includes(id.toString());
 
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setIsFavorite(favorites.includes(id));
-  }, [id]);
-
-  const toggleFavorite = () => {
-    console.log(id);
-
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (favorites.includes(id)) {
-      const updatedFavorites = favorites.filter(favId => favId !== id);
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setIsFavorite(false);
-    } else {
-      // Add to favorites
-      favorites.push(id);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      setIsFavorite(true);
-    }
+  const handleFavoriteToggle = () => {
+    toggleFavorite(id.toString());
   };
+
   return (
     <CardWrapper>
-      <StyledButton onClick={toggleFavorite}>
-        {' '}
-        {isFavorite ? <FaHeart /> : <FaRegHeart />}{' '}
+      <StyledButton onClick={handleFavoriteToggle}>
+        {isFavorite ? <StyledIcon /> : <FaRegHeart />}
       </StyledButton>
       <p>Languages</p>
       <TeacherInfo
@@ -68,7 +53,6 @@ export const TeacherCardShort = ({
         conditions={conditions}
       />
       <ReadMoreButton>
-        {' '}
         <StyledLink to={`/Learn-Lingo/teachers/${id}`}>Read more</StyledLink>
       </ReadMoreButton>
       <TeacherAvatar name={name} avatar_url={avatar_url} />

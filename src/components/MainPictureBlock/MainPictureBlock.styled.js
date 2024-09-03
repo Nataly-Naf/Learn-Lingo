@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const BlockWrapper = styled.div`
-  position: relative;
-  width: 568px;
+  width: 90%;
   height: 530px;
+  position: relative;
   background-color: #fbe9ba;
   border-radius: 30px;
   overflow: hidden;
+
+  @media (min-width: 1220px) {
+    width: 568px;
+    height: 530px;
+  }
 `;
 
 export const ImageGirl = styled.img`

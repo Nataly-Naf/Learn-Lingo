@@ -6,7 +6,6 @@ body {
   font-size: 16;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border: 1px solid red;
 }
 
 code {

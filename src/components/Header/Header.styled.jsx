@@ -12,13 +12,19 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const StyledHeader = styled.header`
-  width: 1184px;
-  box-sizing: border-box;
-  margin: 0 auto;
-  display: flex;
-  padding: 20px 128px;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  @media (min-width: 1220px) {
+    margin-bottom: 0;
+
+    width: 1184px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px 128px;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const LogoBlock = styled.div`
@@ -35,6 +41,10 @@ export const LogoText = styled.span`
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 28px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const NavigationButton = styled(NavLink)`
@@ -85,4 +95,51 @@ export const LoginButton = styled.button`
   padding: 0;
   margin: 0;
   padding: 4px;
+`;
+export const LogoutButton = styled.button`
+  background-color: red;
+`;
+
+export const BurgerIcon = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+export const MobileMenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MobileMenuItem = styled(NavLink)`
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    background-color: #f4f4f4;
+  }
 `;

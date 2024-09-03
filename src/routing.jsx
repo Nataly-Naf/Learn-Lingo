@@ -32,8 +32,6 @@ const loader = async ({ params }) => {
 
       // Check if teacher was found and return the result
       if (foundTeacher) {
-        console.log(foundTeacher);
-
         return foundTeacher;
       } else {
         console.error('Teacher not found with ID:', teacherIdFromParams);
@@ -45,7 +43,7 @@ const loader = async ({ params }) => {
     }
   } catch (error) {
     console.error('Error fetching data:', error);
-    return null; // Return null in case of an error
+    return null;
   }
 };
 

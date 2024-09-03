@@ -35,7 +35,6 @@ export const TeachersList = () => {
   }, []);
 
   useEffect(() => {
-    // Убедитесь, что `data` является массивом, чтобы избежать ошибок
     if (Array.isArray(data)) {
       setFilteredData(
         data.filter(teacher => {

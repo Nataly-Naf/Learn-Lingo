@@ -11,7 +11,13 @@ import {
   RegistrationButton,
   LoginButton,
   StyledNavLink,
+  LogoutButton,
+  BurgerIcon,
+  MobileMenu,
+  MobileMenuItem,
+  MobileMenuWrapper,
 } from './Header.styled';
+
 import { LoginModalWindow } from 'components/LoginModalWindow/LoginModalWindow';
 import { RegisterModalWindow } from 'components/RegisterModalWindow/RegisterModalWindow';
 export const Header = () => {
@@ -19,8 +25,12 @@ export const Header = () => {
   const closeLoginModal = () => setLoginModalOpen(false);
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
   const closeRegisterModal = () => setRegisterModalOpen(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const { user, signout } = useAuth();
+
   const handleLogout = () => {
+    console.log('logout click');
     signout();
   };
   return (
@@ -53,6 +63,33 @@ export const Header = () => {
           <LogoText>LearnLingo</LogoText>
         </LogoBlock>
       </StyledNavLink>
+
+      <BurgerIcon onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 6H21M3 12H21M3 18H21"
+            stroke="black"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </BurgerIcon>
+      <MobileMenu isOpen={isMobileMenuOpen}>
+        <MobileMenuWrapper>
+          <MobileMenuItem to="/Learn-Lingo/">Home</MobileMenuItem>
+          <MobileMenuItem to="/Learn-Lingo/teachers">Teachers</MobileMenuItem>
+          <MobileMenuItem to="/Learn-Lingo/favourites">
+            Favourites
+          </MobileMenuItem>
+        </MobileMenuWrapper>
+      </MobileMenu>
 
       <ButtonWrapper>
         <NavigationButton to="/Learn-Lingo/">Home</NavigationButton>
@@ -91,8 +128,8 @@ export const Header = () => {
         )}
         {user && (
           <div>
-            <p>Welcome {user.email}</p>
-            <button onClick={handleLogout}>Logout</button>
+            <p>Hi! {user.email}</p>
+            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
           </div>
         )}
         {isLoginModalOpen && <LoginModalWindow closeModal={closeLoginModal} />}

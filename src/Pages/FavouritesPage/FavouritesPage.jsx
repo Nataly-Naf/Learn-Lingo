@@ -1,46 +1,62 @@
 import { TeacherCardShort } from 'components/TeacherCardShort/TeacherCardShort';
-import fetchData from 'fetchData'; // Ensure fetchData is correctly set up to return parsed JSON
+import { useAuth } from 'context/authContext';
+import { fetchTeacherById } from 'fetchData';
 import React, { useEffect, useState } from 'react';
 
 export const Favorites = () => {
-  const [favoriteTeachers, setFavoriteTeachers] = useState([]);
-  const [allTeachers, setAllTeachers] = useState([]);
+  const { favorites } = useAuth();
+  console.log('Favorites from context:', favorites);
+  const [teachers, setTeachers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchAllTeachers = async () => {
+    const loadFavoriteTeachers = async () => {
+      setLoading(true);
+      setError(null);
+
+      if (favorites.length === 0) {
+        setTeachers([]); // Установите пустой массив, если нет избранных
+        setLoading(false);
+        return;
+      }
+
+      const teachersData = [];
       try {
-        const data = await fetchData(); // Assuming fetchData returns already parsed JSON
-        setAllTeachers(data);
-      } catch (error) {
-        console.error('Failed to fetch teachers:', error);
+        for (const id of favorites) {
+          console.log(`Fetching teacher with id: ${id}`);
+          const teacher = await fetchTeacherById(parseInt(id));
+          console.log(`Fetched teacher data for id ${id}:`, teacher);
+
+          if (teacher) {
+            teachersData.push(teacher);
+          } else {
+            console.warn(`Teacher not found for id: ${id}`);
+          }
+        }
+        setTeachers(teachersData);
+      } catch (err) {
+        setError('Failed to load favorite teachers.');
+        console.error('Error loading teachers:', err);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchAllTeachers();
-  }, []);
+    loadFavoriteTeachers();
+  }, [favorites]);
 
-  useEffect(() => {
-    const favoriteIds = JSON.parse(localStorage.getItem('favorites')) || [];
-
-    if (allTeachers.length > 0) {
-      const filteredTeachers = allTeachers.filter(teacher =>
-        favoriteIds.includes(teacher.id)
-      );
-      setFavoriteTeachers(filteredTeachers);
-    }
-  }, [allTeachers]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (teachers.length === 0) return <p>No favorite teachers found</p>;
 
   return (
     <div>
-      <h1>Your Favorite Teachers</h1>
+      <h1>Favorite Teachers</h1>
       <div>
-        {favoriteTeachers.length > 0 ? (
-          favoriteTeachers.map(teacher => (
-            <TeacherCardShort key={teacher.id} teacher={teacher} />
-          ))
-        ) : (
-          <p>You have no favorite teachers yet.</p>
-        )}
+        {teachers.map(teacher => (
+          <TeacherCardShort key={teacher.id} teacher={teacher} />
+        ))}
       </div>
     </div>
   );
