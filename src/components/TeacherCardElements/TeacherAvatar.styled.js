@@ -16,5 +16,5 @@ export const AvatarWrapper = styled.div`
   border-radius: 50%;
   left: 24px;
   top: 24px;
-  border: 3px solid #fbe9ba;
+  border: 3px solid var(--dark-color);
 `;

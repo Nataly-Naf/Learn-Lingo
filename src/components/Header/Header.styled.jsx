@@ -97,7 +97,7 @@ export const LoginButton = styled.button`
   padding: 4px;
 `;
 export const LogoutButton = styled.button`
-  background-color: red;
+  background-color: var(--dark-color);
 `;
 
 export const BurgerIcon = styled.button`

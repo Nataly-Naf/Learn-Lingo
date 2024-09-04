@@ -3,12 +3,22 @@ import styled from 'styled-components';
 export const FooterWrapper = styled.div`
   display: flex;
   box-sizing: border-box;
-  width: 1312px;
+  width: 100%;
+  max-width: 1312px;
   margin: 0 auto;
   gap: 100px;
   justify-content: center;
-  border: 2px dashed #f4c550;
+  border: 2px dashed var(--dark-color);
   height: 116px;
   border-radius: 30px;
   margin-top: 22px;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    padding: 20px;
+  }
 `;

@@ -1,15 +1,27 @@
 import styled from 'styled-components';
-
+export const Background = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+`;
 export const ModalWrapper = styled.div`
   position: absolute;
   z-index: 10000;
   background-color: white;
-  top: 300px;
-  left: 300px;
-  width: 566px;
-  border: 2px solid red;
-  padding: 64px;
+  padding: 30px;
   border-radius: 30px;
+  width: 90%;
+  @media (min-width: 1220px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 566px;
+    padding: 64px;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -23,12 +35,16 @@ export const CloseButton = styled.button`
 export const ModalWindowTitle = styled.h2`
   font-size: 40px;
   margin: 0;
+  margin-bottom: 20px;
 `;
 
 export const ModalWindowText = styled.p`
-  margin-top: 20px;
+  margin: 0 auto;
+  max-width: 100%;
 `;
 export const FormWrapper = styled.form`
+  max-width: 100%;
+  margin: 0 auto;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -44,7 +60,7 @@ export const Input = styled.input`
 export const SubmitButton = styled.button`
   width: 100%;
   padding: 16px;
-  background-color: #f4c550;
+  background-color: var(--dark-color);
   border: none;
   border-radius: 12px;
   font-size: 18px;
@@ -52,6 +68,6 @@ export const SubmitButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #ffdc86;
+    background-color: var(--light-color);
   }
 `;

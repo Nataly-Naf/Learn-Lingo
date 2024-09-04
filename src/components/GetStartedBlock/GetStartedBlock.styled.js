@@ -5,6 +5,7 @@ export const BlockWrapper = styled.div`
   box-sizing: border-box;
   background-color: #f8f8f8;
   padding: 20px;
+  margin: 0 auto;
   margin-bottom: 20px;
 
   border-radius: 30px;
@@ -31,7 +32,7 @@ export const SelectedText = styled.span`
   font-size: 48px;
   font-weight: 400;
 
-  background-color: #fbe9ba;
+  background-color: var(--dark-color);
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;
