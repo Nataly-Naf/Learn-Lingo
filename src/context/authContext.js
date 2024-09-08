@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const toggleFavorite = id => {
-    const idString = id.toString(); // Преобразуем id в строку
+    const idString = id.toString();
     let updatedFavorites;
 
     if (favorites.includes(idString)) {

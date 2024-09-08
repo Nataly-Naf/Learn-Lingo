@@ -7,6 +7,7 @@ import {
   Input,
   FormWrapper,
   SubmitButton,
+  Background,
 } from './RegisterModalWindow.styled';
 import { IoClose } from 'react-icons/io5';
 import { useAuth } from 'context/authContext';
@@ -32,34 +33,36 @@ export const RegisterModalWindow = ({ closeModal }) => {
     }
   };
   return (
-    <ModalWrapper>
-      {error && <p>{error}</p>}
-      <CloseButton onClick={() => closeModal()}>
-        <IoClose size={32} />
-      </CloseButton>
+    <Background>
+      <ModalWrapper>
+        {error && <p>{error}</p>}
+        <CloseButton onClick={() => closeModal()}>
+          <IoClose size={32} />
+        </CloseButton>
 
-      <ModalWindowTitle>Register</ModalWindowTitle>
-      <ModalWindowText>
-        Welcome! Please enter your credentials to make your account.
-      </ModalWindowText>
-      <FormWrapper onSubmit={handleSubmit}>
-        <Input
-          id="email"
-          type="email"
-          placeholder="Email"
-          name="email"
-          onChange={handleChange}
-        />
+        <ModalWindowTitle>Register</ModalWindowTitle>
+        <ModalWindowText>
+          Welcome! Please enter your credentials to make your account.
+        </ModalWindowText>
+        <FormWrapper onSubmit={handleSubmit}>
+          <Input
+            id="email"
+            type="email"
+            placeholder="Email"
+            name="email"
+            onChange={handleChange}
+          />
 
-        <Input
-          id="password"
-          type="password"
-          placeholder="******"
-          name="password"
-          onChange={handleChange}
-        />
-        <SubmitButton type="submit">Register</SubmitButton>
-      </FormWrapper>
-    </ModalWrapper>
+          <Input
+            id="password"
+            type="password"
+            placeholder="******"
+            name="password"
+            onChange={handleChange}
+          />
+          <SubmitButton type="submit">Register</SubmitButton>
+        </FormWrapper>
+      </ModalWrapper>
+    </Background>
   );
 };

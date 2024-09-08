@@ -1,16 +1,28 @@
 import styled from 'styled-components';
 
+export const Background = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+`;
 export const ModalWrapper = styled.div`
   position: absolute;
-  z-index: 9000;
+  z-index: 10000;
   background-color: white;
-  top: 300px;
-  left: 300px;
-  width: 566px;
-  //   height: 506px;
-  border: 2px solid red;
-  padding: 64px;
+  padding: 30px;
   border-radius: 30px;
+  width: 90%;
+  @media (min-width: 1220px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 566px;
+    padding: 64px;
+  }
 `;
 
 export const CloseButton = styled.button`

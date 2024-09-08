@@ -11,7 +11,7 @@ export const BlockWrapper = styled.div`
   border-radius: 30px;
   @media (min-width: 768px) {
     width: 720px;
-    height: 530px;
+    // height: 530px;
     padding-left: 64px;
     padding-top: 98px;
     padding-right: 108px;

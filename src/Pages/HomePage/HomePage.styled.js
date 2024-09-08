@@ -11,6 +11,7 @@ export const HomePageWrapper = styled.div`
 
 export const MainBlocksWrapper = styled.main`
   width: 100%;
+  height: auto;
   @media (min-width: 768px) {
     display: flex;
     justify-content: center;

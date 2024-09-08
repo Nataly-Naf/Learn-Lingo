@@ -4,6 +4,7 @@ import { MainPictureBlock } from 'components/MainPictureBlock/MainPictureBlock.j
 import { Footer } from 'components/Footer/Footer.jsx';
 import fetchData from 'fetchData.js';
 import { useEffect, useState } from 'react';
+import { Header } from 'components/Header/Header.jsx';
 // import styles from './HomePage.module.css';
 
 export const HomePage = () => {
@@ -47,6 +48,7 @@ export const HomePage = () => {
         </button>
       </div> */}
       {/* <StyledMain> */}
+      <Header />
       <MainBlocksWrapper>
         <GetStartedBlock />
         <MainPictureBlock />

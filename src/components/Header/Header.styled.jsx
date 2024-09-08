@@ -13,7 +13,20 @@ export const StyledNavLink = styled(NavLink)`
 
 export const StyledHeader = styled.header`
   width: 100%;
+  padding: 20px;
   margin-bottom: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  justify-content: center; /* Добавьте это свойство */
+  width: fit-content; /* Добавьте это свойство, чтобы контейнер занимал только нужную ширину */
+  margin-bottom: 20px;
+  @media (min-width: 590px) {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   @media (min-width: 1220px) {
     margin-bottom: 0;
 
@@ -26,7 +39,10 @@ export const StyledHeader = styled.header`
     align-items: center;
   }
 `;
-
+export const MobileWrapper = styled.div`
+  display: flex;
+  gap: 30px;
+`;
 export const LogoBlock = styled.div`
   display: flex;
   gap: 8px;
@@ -66,6 +82,10 @@ export const NavigationButton = styled(NavLink)`
 export const RegistrationWrapper = styled.div`
   display: flex;
   gap: 28px;
+  margin-top: 20px;
+  @media (min-width: 590px) {
+    margin-top: 0;
+  }
 `;
 
 export const RegistrationButton = styled.button`

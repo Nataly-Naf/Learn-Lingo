@@ -8,33 +8,22 @@ import { GlobalStyles } from 'GlobalStyles';
 import { ThemeSwitcher } from 'ThemeSwitcher';
 
 export const App = () => {
-  const [theme, setTheme] = useState('yellow');
+  const [theme, setTheme] = useState('yellow'); // Добавляем setTheme
 
-  const handleThemeChange = selectedTheme => {
-    setTheme(selectedTheme);
-  };
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => {
-      if (prevTheme === 'yellow') return 'green';
-      if (prevTheme === 'green') return 'blue';
-      return 'yellow';
-    });
-  };
   const currentTheme =
     theme === 'yellow'
       ? yellowTheme
       : theme === 'green'
       ? greenTheme
       : blueTheme;
+
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <ThemeSwitcher onThemeChange={handleThemeChange} />
       <AuthProvider>
+        <ThemeSwitcher onThemeChange={setTheme} />
         <RouterProvider router={Router} />
       </AuthProvider>
-      <button onClick={toggleTheme}>Toggle Theme</button>
     </ThemeProvider>
   );
 };

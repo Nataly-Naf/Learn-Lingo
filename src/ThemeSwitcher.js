@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SwitcherContainer = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 30px;
   display: flex;
   gap: 10px;
-  margin: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+  justify-content: center;
+  width: fit-content;
 `;
 
 const ThemeButton = styled.button`

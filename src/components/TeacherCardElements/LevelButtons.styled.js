@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const LevelButtonWrapper = styled.div`
   display: flex;
   margin-top: 32px;
+  margin-bottom: 20px;
   gap: 8px;
 `;
 export const LevelButton = styled.button`

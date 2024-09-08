@@ -12,8 +12,3 @@ export const FooterInfo = ({ numbers, descr }) => {
     </FooterInfoWrapper>
   );
 };
-
-// FooterInfo.propTypes = {
-//   numbers: PropTypes.number.isRequired,
-//   descr: PropTypes.string.isRequired,
-// };

@@ -3,7 +3,7 @@ import { TeacherCardShort } from 'components/TeacherCardShort/TeacherCardShort';
 import fetchData from 'fetchData';
 import { useEffect, useState } from 'react';
 import { Wrapper } from './TeachersList.styled';
-
+import { Button } from 'components/Button/Button';
 export const TeachersList = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -87,9 +87,9 @@ export const TeachersList = () => {
           </div>
         ))}
       {nextPageStartId && (
-        <button onClick={loadMore} disabled={loading}>
+        <Button text="Load more" onClick={loadMore} disabled={loading}>
           {loading ? 'Loading...' : 'Load more'}
-        </button>
+        </Button>
       )}
     </Wrapper>
   );
