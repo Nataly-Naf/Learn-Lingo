@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-
-export const Wrapper = styled.div`
+export const TeachersPageWrapper = styled.div`
   width: 100%;
-
-  background-color: #eeeeee;
-  padding: 96px 128px;
-
   @media (min-width: 768px) {
+    width: 1440px;
+    display: flex;
     justify-content: center;
     gap: 24px;
   }

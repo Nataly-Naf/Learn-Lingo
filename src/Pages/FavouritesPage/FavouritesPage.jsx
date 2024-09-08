@@ -3,6 +3,7 @@ import { TeacherCardShort } from 'components/TeacherCardShort/TeacherCardShort';
 import { useAuth } from 'context/authContext';
 import { fetchTeacherById } from 'fetchData';
 import React, { useEffect, useState } from 'react';
+import { FavouritePageWrapper } from './FavouritesPage.styled';
 export const Favorites = () => {
   const { favorites } = useAuth();
   const [teachers, setTeachers] = useState([]);
@@ -51,7 +52,7 @@ export const Favorites = () => {
     );
 
   return (
-    <div>
+    <FavouritePageWrapper>
       <Header />
       <h1>Favorite Teachers</h1>
       <div>
@@ -59,6 +60,6 @@ export const Favorites = () => {
           <TeacherCardShort key={teacher.id} teacher={teacher} />
         ))}
       </div>
-    </div>
+    </FavouritePageWrapper>
   );
 };
